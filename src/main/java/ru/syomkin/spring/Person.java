@@ -3,12 +3,13 @@ package ru.syomkin.spring;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
 public class Person {
     private Vehicle vehicle;
+    private Dog dog;
 
-    public Person(@Qualifier("car") Vehicle vehicle) {
+    public Person(@Qualifier("car") Vehicle vehicle, Dog dog) {
         this.vehicle = vehicle;
+        this.dog = dog;
         System.out.println("Person constructor");
     }
 
@@ -20,5 +21,10 @@ public class Person {
     public void startVehicleEngine() {
         System.out.println("Person: start vehicle engine");
         this.vehicle.startEngine();
+    }
+
+    public void callPat() {
+        System.out.println("Call pat!");
+        System.out.println(dog.getName() + " come to me");
     }
 }
